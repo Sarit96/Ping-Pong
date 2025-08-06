@@ -1,103 +1,344 @@
+:root {
+  --bg-gradient: linear-gradient(135deg, #111 70%, #0ef 120%);
+  --surface: rgba(25,32,74, 0.94);
+  --card: rgba(36,44,93,0.88);
+  --accent: #0ef;
+  --neon: 0 0 8px #0ef, 0 0 24px #0ef6;
+  --text-light: #f6f7fa;
+  --gold: #ffd700;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-    text-align: center;
-    padding: 20px;
+  background: var(--surface);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+  border-radius: 18px;
+  padding: 38px 32px 24px 32px;
+  margin-top: 30px;
+  min-width: 340px;
+  max-width: 520px;
+  width: 90vw;
 }
 
 h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: var(--accent);
+  text-shadow: var(--neon);
+  margin-bottom: 25px;
 }
 
 .game-info {
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .score {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+  background: var(--card);
+  padding: 12px 28px;
+  border-radius: 1.4em;
+  font-size: 2.2rem;
+  font-weight: bold;
+  box-shadow: 0 0 10px #010b18aa;
+  letter-spacing: 0.04em;
 }
 
 .player-info {
-    font-size: 1.2rem;
-    color: #ffd700;
+  font-size: 1.08rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
 }
 
 #gameCanvas {
-    border: 3px solid #fff;
-    background-color: #000;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  display: block;
+  margin: 0 auto 22px auto;
+  border: none;
+  background: #060e1f;
+  border-radius: 16px;
+  box-shadow: 0 0 30px #0ef5, 0 2px 20px #000a  ;
+  transition: box-shadow 0.2s;
 }
 
 .controls {
-    margin-top: 20px;
+  text-align: center;
+  margin: 16px 0 8px 0;
 }
 
 .instructions {
-    background: rgba(255,255,255,0.1);
-    padding: 15px;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
+  background: var(--card);
+  color: var(--text-light);
+  border-radius: 10px;
+  padding: 18px 14px;
+  margin: 16px auto 0 auto;
+  box-shadow: 0 2px 8px #010b1855;
 }
 
 .instructions h3 {
-    margin-bottom: 10px;
-    color: #ffd700;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 1.14rem;
+  text-shadow: var(--neon);
 }
 
 .instructions p {
-    margin: 5px 0;
-    font-size: 1rem;
+  font-size: 1.01rem;
+  opacity: 0.92;
+  margin: 7px 0 0 0;
+  letter-spacing: 0.01em;
 }
 
 .status {
-    margin-top: 15px;
-    font-size: 1.1rem;
-    font-weight: bold;
+  margin-top: 18px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 7px 0 2px;
+  border-radius: 5px;
+  min-height: 1.5em;
+  transition: background 0.2s, color 0.2s;
 }
 
 .status.error {
-    color: #ff6b6b;
+  color: #ff6b6b;
+  background: #22070895;
+  text-shadow: 0 0 6px #ff6b6bcc;
 }
 
 .status.success {
-    color: #51cf66;
+  color: #00faa2;
+  background: #07221395;
+  text-shadow: 0 0 6px #44ffb193;
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-    
-    h1 {
-        font-size: 2rem;
-    }
-    
-    #gameCanvas {
-        width: 100%;
-        max-width: 600px;
-        height: auto;
-    }
-    
-    .score {
-        font-size: 1.5rem;
-    }
+/* Mobile Responsive */
+@media (max-width: 650px) {
+  .container {
+    padding: 18px 6vw 10px 6vw;
+    min-width: 0;
+    width: 99vw;
+    margin-top: 6vw;
+    border-radius: 10px;
+  }
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+  }
+  .score {
+    padding: 10px 12px;
+    font-size: 1.35rem;
+  }
+  #gameCanvas {
+    width: 99vw;
+    max-width: 98vw;
+    min-width: 180px;
+    height: 188px;
+    border-radius: 10px;
+  }
+  .instructions {
+    padding: 9px 6px;
+    font-size: 0.95rem;
+    border-radius: 8px;
+  }
+}
+
+/* Subtle neon hover for canvas */
+#gameCanvas:hover, #gameCanvas:focus {
+  box-shadow: 0 0 40px #0ef, 0 0 64px #0ef8, 0 2px 25px #000b;
+}
+
+/* Glow animation for active paddle (optional, if you mark it in HTML) */
+.paddle-active {
+  filter: drop-shadow(0 0 16px var(--gold));
+  animation: paddleGlow 1.1s linear infinite alternate;
+}
+@keyframes paddleGlow {
+  from { filter: drop-shadow(0 0 12px #ffa502); }
+  to   { filter: drop-shadow(0 0 32px #ffd700); }
+}
+:root {
+  --primary-bg: linear-gradient(135deg, #1e3c72, #2a5298);
+  --container-bg: rgba(30, 60, 120, 0.92);
+  --info-bg: rgba(255,255,255,0.09);
+  --accent: #ffd700;
+  --canvas-shadow: 0 0 20px rgba(255,255,255,0.3);
+  --radius: 15px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: var(--primary-bg);
+  color: #fff;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive container */
+.container {
+  text-align: center;
+  padding: 32px 30px 24px 30px;
+  background: var(--container-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 32px rgba(0,0,0,0.24);
+  width: 95vw;
+  max-width: 540px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 18px;
+  text-shadow: 2px 2px 8px #000a;
+}
+
+/* Game info and scores, responsive row */
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 1em;
+}
+.score {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  background: var(--info-bg);
+  padding: 10px 22px;
+  border-radius: 1em;
+}
+.player-info {
+  font-size: 1.05rem;
+  color: var(--accent);
+}
+
+/* The canvas resizes using parent container and max values */
+#gameCanvas {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 4 / 3;
+  display: block;
+  margin: 0 auto 16px auto;
+  border: 2px solid #fff;
+  background: #000;
+  border-radius: var(--radius);
+  box-shadow: var(--canvas-shadow);
+}
+
+/* Controls/info sections */
+.controls {
+  margin: 17px 0 7px 0;
+}
+.instructions {
+  background: var(--info-bg);
+  color: #fff;
+  border-radius: 10px;
+  padding: 15px 7px;
+  margin: 14px auto 0 auto;
+  font-size: 1rem;
+  backdrop-filter: blur(8px);
+}
+.instructions h3 {
+  margin-bottom: 7px;
+  color: var(--accent);
+  font-size: 1.09rem;
+}
+.instructions p {
+  margin: 4px 0;
+  font-size: 1em;
+}
+
+.status {
+  margin-top: 13px;
+  font-size: 1.13rem;
+  font-weight: bold;
+  min-height: 2em;
+}
+.status.error {
+  color: #ff6b6b;
+}
+.status.success {
+  color: #51cf66;
+}
+
+/* ================ Responsive Media Queries ================ */
+
+/* Tablets and below: reduce padding, font, make canvas smaller */
+@media (max-width: 750px) {
+  .container {
+    padding: 18px 5vw 12px 5vw;
+    max-width: 97vw;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  .score {
+    font-size: 1.25rem;
+    padding: 9px 8vw;
+  }
+  #gameCanvas {
+    max-width: 95vw;
+    min-width: 160px;
+    height: auto;
+  }
+}
+
+/* Phones: even smaller paddings and fonts, stack columns */
+@media (max-width: 480px) {
+  .container {
+    padding: 6vw 2vw 6vw 2vw;
+    min-width: 0;
+    border-radius: 7px;
+  }
+  .game-info {
+    flex-direction: column;
+    gap: 0.35em;
+  }
+  h1 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  .score {
+    font-size: 1rem;
+    padding: 6px 10vw;
+  }
+  #gameCanvas {
+    min-width: 100px;
+    aspect-ratio: 4 / 3;
+    border-radius: 7px;
+    box-shadow: 0 2px 8px #000a;
+  }
+  .instructions {
+    padding: 7px 4px;
+    font-size: 0.93em;
+    border-radius: 7px;
+  }
 }
